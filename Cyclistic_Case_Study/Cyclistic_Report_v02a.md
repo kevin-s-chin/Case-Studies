@@ -95,7 +95,7 @@ To gain perspective on how casuals and members use Cyclistic’s services, we’
 
 First, we’ll examine the median number of rides casuals and members made on a monthly basis.
 <p align="center">
-<img align="center" src="https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study_v02a/Cyclistic_case_study_visualizations_v02a/median_month.png?raw=true" width="700" height="auto">
+<img align="center" src="https://github.com/kevin-s-chin/Case_Studies/blob/main/Cyclistic_Case_Study/cyclistic_visualizations/median_month.png?raw=true" width="700" height="auto">
 </p>
 
 This graph illustrates the how the seasons affect ridership. Casuals and member ridership is highest during the summer months. As the weather gets colder throughout fall and winter, overall ridership falls significantly with an 88% drop-off in casual ridership during January relative to June. Member usage also decreases by 70% in December from its high in August. In the coldest Winter months, there are about three times as many member rides as there are casual rides. Next, we’ll zoom in one step further and look at the data with respect to the days of the week.
@@ -103,13 +103,13 @@ This graph illustrates the how the seasons affect ridership. Casuals and member 
 **************************************************Weekly ridership behavior**************************************************
 
 <p align="center">
-<img align="center" src="https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study_v02a/Cyclistic_case_study_visualizations_v02a/median_week.png?raw=true" width="700" height="auto">
+<img align="center" src="https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study/cyclistic_visualizations/median_week.png?raw=true" width="700" height="auto">
 </p>
 
 Here we can see the ebb and flow of usage by our members throughout the week. Median member usage peaks on Thursday, then diminishes before bottoming out on Sunday and ramping back up again on Monday. Median casual ridership peaks on Saturday and bottoms on Monday and Tuesday. Now we know the majority of our ride volume throughout the year comes from members and it’s particularly concentrated during weekdays, but how long do our users spend on each trip?
 
 <p align="center">
-<img align="center" src="https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study_v02a/Cyclistic_case_study_visualizations_v02a/Median_duration_week.png?raw=true" width="700" height="auto">
+<img align="center" src="https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study/cyclistic_visualizations/Median_duration_week.png?raw=true" width="700" height="auto">
 </p>
 
 This is an interesting development - the majority of median ridership volume comes from members, but members spend less time per ride than casuals. In other words, members on aggregate go on many short-duration trips while our casual userbase makes fewer longer-duration trips. Median member trip duration also remains consistent throughout the week. This is particularly apparent on Saturday and Sunday, where median casual ride duration increases substantially.  
@@ -130,7 +130,7 @@ Member average and median rides are very close in duration, which supports our t
 ************Intraday ridership behavior************
 
 <p align="center">
-<img align="center" src="https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study_v02a/Cyclistic_case_study_visualizations_v02a/median_hour_combined.png?raw=true" width="900" height="auto">
+<img align="center" src="https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study/cyclistic_visualizations/median_hour_combined.png?raw=true" width="900" height="auto">
 </p>
 
 On the left graph, it’s apparent that members are using their bikes to commute on weekdays since median ridership peaks during the morning and afternoon rush hour. Casual ridership steadily creeps up during the day and peaks during afternoon rush hour as well. Weekend median member ridership looks greater than casual ridership, but this difference is not necessarily statistically significant (see Appendix 4). The takeaway here is that on the weekdays, member and casual behavior deviate significantly, while they are similar on the weekends.
@@ -152,7 +152,7 @@ Putting these findings together, we can infer that members have integrated our b
 To get a better sense of how casuals behave, we’ll look at the locations of the top 10 stations used by casuals and members. This was measured by summing the total number of rides that started and ended at each station and ranking them. 
 
 <p align="center">
-<img align="center" src="https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study_v02a/Cyclistic_case_study_visualizations_v02a/station_freq_pie_combined.png?raw=true" width="700" height="auto">
+<img align="center" src="https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study/cyclistic_visualizations/station_freq_pie_combined.png?raw=true" width="700" height="auto">
 </p>
 
 The proportional ridership among top 10 stations, categorized by location, for casuals and members is shown below:
