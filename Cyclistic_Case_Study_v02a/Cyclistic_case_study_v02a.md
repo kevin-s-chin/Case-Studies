@@ -97,7 +97,7 @@ To gain perspective on how casuals and members use Cyclistic’s services, we’
 
 First, we’ll examine the median number of rides casuals and members made on a monthly basis. 
 
-![median_month.png](Cyclistic%20Case%20Study%20d50e5055519546f28f47f234894c52b3/median_month.png)
+![median_month.png](Cyclistic_Case_Study_v02a/Cyclistic_case_study_visualizations_v02a/median_month.png)
 
 This graph illustrates the how the seasons affect ridership. Casuals and member ridership is highest during the summer months. As the weather gets colder throughout fall and winter, overall ridership falls significantly with an 88% drop-off in casual ridership during January relative to June. Member usage also decreases by 70% in December from its high in August. In the coldest Winter months, there are about three times as many member rides as there are casual rides. Next, we’ll zoom in one step further and look at the data with respect to the days of the week.
 
