@@ -465,7 +465,7 @@ bike_data <- bike_data %>%
 SQL:
 
 ```sql
--- 1. Check for any errors in latitude or longitude errors
+-- 1. Check for any errors in latitude or longitude
 SELECT
   ride_id,
   start_station_name,
