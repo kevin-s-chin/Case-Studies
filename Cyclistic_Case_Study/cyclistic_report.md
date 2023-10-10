@@ -54,11 +54,12 @@ Based on our findings, we recommend that the new marketing strategy focuses on:
 2. Data Collection
 3. Data Processing
 4. Analysis and Findings
-5. Recommendations
-6. Appendix 1: Statistical Analysis
-7. Appendix 2: R Code and SQL Queries for Data Cleaning
-8. Appendix 3: R Code and SQL Queries for Data Transformations
-9. Appendix 4: R Code for Data Analysis
+5. Summary Conclusion
+6. Recommendations
+7. Appendix 1: Statistical Analysis
+8. Appendix 2: R Code and SQL Queries for Data Cleaning
+9. Appendix 3: R Code and SQL Queries for Data Transformations
+10. Appendix 4: R Code for Data Analysis
 
 ## Introduction
 
@@ -105,35 +106,29 @@ Next, the data needs to be transformed before analysis:
 
 To gain perspective on how casuals and members use Cyclistic’s services, we’ll start our analysis at a macro level then look at the data in increasing levels of detail. Medians will be compared for most of the analysis because statistical tests (see Appendix 1) revealed that the data does not follow a normal distribution. Therefore the median provides the least biased estimate with which to compare the data.
 
-****************************************************************Monthly ridership behavior****************************************************************
+#### Monthly ridership behavior
 
 First, we’ll examine the median number of rides casuals and members made on a monthly basis. 
 
 <p align="center">
-<img align="center" src="[https://github.com/kevin-s-chin/Case_Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/median_month.png?raw=true](https://github.com/kevin-s-chin/Case_Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/median_month.png?raw=true)" width="700" height="auto">
+<img src="https://github.com/kevin-s-chin/Case_Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/median_month.png?raw=true" width="700">
 </p>
-
-![median_month.png](Cyclistic%20Case%20Study%20Report%20d50e5055519546f28f47f234894c52b3/median_month.png)
 
 This graph illustrates how the seasons affect ridership. Casuals and member ridership is highest during the pleasant summer months, but ridership falls significantly as the weather gets colder. There’s an 88% drop in casual ridership from June to January. Member usage decreases by 70% from its high in August to its low in December. In the coldest Winter months, there are about three times as many member rides as there are casual rides.
 
 Next, we’ll zoom in further and look at the frequency and duration of rides with respect to the day of the week.
 
-**************************************************Weekly ridership behavior**************************************************
+#### Weekly ridership behavior
 
 <p align="center">
-<img align="center" src="[https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/median_week.png?raw=true](https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/median_week.png?raw=true)" width="700" height="auto">
+<img src="https://github.com/kevin-s-chin/Case_Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/median_duration_week.png?raw=true" width="700">
 </p>
-
-![median_week.png](Cyclistic%20Case%20Study%20Report%20d50e5055519546f28f47f234894c52b3/median_week.png)
 
 Here we can see the ebb and flow of bike usage throughout the week. Median member ridership peaks on Thursday, then decreases until Monday where it ramps up again. Median casual ridership peaks on Saturday and bottoms on Monday and Tuesday. The majority of ride volume throughout the year comes from members and it’s particularly concentrated during weekdays, but how long do members and casuals spend on each trip? The difference between median rides per day for members and casuals on Saturday and Sunday was not statistically significant. 
 
 <p align="center">
-<img align="center" src="[https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/median_duration_week.png?raw=true](https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/Median_duration_week.png?raw=true)" width="700" height="auto">
+<img src="https://github.com/kevin-s-chin/Case_Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/median_week.png?raw=true" width="700">
 </p>
-
-![Median_duration_week.png](Cyclistic%20Case%20Study%20Report%20d50e5055519546f28f47f234894c52b3/Median_duration_week.png)
 
 Median member ride duration is less than median casual ride duration every day of the week and, from the previous graph, the majority of median ridership volume comes from members. In other words, members tend to make many short-duration trips. Median member ride duration also remains consistent throughout the week whereas casual ride duration increases on the weekends.
 
@@ -152,13 +147,11 @@ Member average and median ride duration are similar, which supports our earlier 
 
 Next, we’ll examine the intraday ride frequency of members and casuals.
 
-************Intraday ridership behavior************
+#### Intraday ridership behavior
 
 <p align="center">
-<img align="center" src="[https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/median_hour_combined.png?raw=true](https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/median_hour_combined.png?raw=true)" width="900" height="auto">
+<img src="https://github.com/kevin-s-chin/Case_Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/median_hour_combined.png?raw=true" width="900">
 </p>
-
-![median_hour_combined.png](Cyclistic%20Case%20Study%20Report%20d50e5055519546f28f47f234894c52b3/median_hour_combined.png)
 
 Observe the spikes in median member ridership at 8:00 and 17:00 on the left-hand graph. Those spikes illustrate that members are using their bikes to commute during rush hour. Casual ridership steadily creeps up during the day and peaks during afternoon rush hour as well. 
 
@@ -168,40 +161,29 @@ Weekend median member ridership looks greater than casual ridership, but this di
 
 It can be inferred from this that members have integrated our bike-sharing service into their daily routine to a greater extent than casuals. Cyclistic fulfills an essential piece its members’ everyday transportation needs.
 
-********************************************************************************************Station usage by members and casuals********************************************************************************************
+#### Station usage by members and casuals
 
 To get a better sense of how casuals behave, we collated the locations of the top 10 stations used by casuals and members. The top-10 lists were determined by ranking the stations using the sum of rides started and ended at each one.
 
 <p align="center">
-<img align="center" src="[https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/station_freq_pie_combined.png?raw=true](https://github.com/kevin-s-chin/Case-Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/station_freq_pie_combined.png?raw=true)" width="700" height="auto">
+<img src="https://github.com/kevin-s-chin/Case_Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/station_freq_pie_combined.png?raw=true" width="700">
 </p>
 
-![station_freq_pie_combined.png](Cyclistic%20Case%20Study%20Report%20d50e5055519546f28f47f234894c52b3/station_freq_pie_combined.png)
-
 Among the top 10 stations used by casuals, seven are on the lakefront and two are next to parks. Only one is situated in an urban area. Conversely, eight top member stations are urban. This implies casuals often use our bikes for leisure and have not integrated our bike service into their daily  routine to the extent that members have. Their high winter attrition rate makes more sense in this context.
+  
+## Summary Conclusion
+This data analysis study has identified the following trends among members and casuals:
 
-<aside>
-📝 Putting it all together
+| Members | Casuals |
+| --- | --- |
+| Persist through winter to a greater degree than casuals | Ride in a recreational capacity |
+| Have a larger volume of short-duration rides than casuals | Don’t often bike to work in the morning |
+| Ride more on the weekdays than casuals | Frequently rent a bike after work, possibly to relax or exercise |
+| Ride most during rush hour on weekdays | Majority of most popular stations are on the lakefront |
+| Have a similar intraday ridership profile to casuals on weekends |  |
+| Majority of most popular stations are urban |  |
 
-Members:
-
-- Persist through winter to a greater degree than casuals
-- Have a larger volume of short-duration rides than casuals
-- Ride more on the weekdays than casuals
-- Ride most during rush hour on weekdays
-- Have a similar intraday ridership profile to casuals on weekends
-- Majority of most popular stations are urban
-
-Casuals:
-
-- Ride in a recreational capacity
-- Don’t often bike to work in the morning
-- Frequently rent a bike after work, possibly to relax or exercise
-- Majority of most popular stations are on the lakefront
-
-***Key takeaway:** **members use Cyclistic bikes to fulfill their everyday transportation needs while casuals tend to use them recreationally.***  
-
-</aside>
+***Key takeaway:** **Members use Cyclistic bikes to fulfill their everyday transportation needs while casuals tend to use them recreationally.***  
 
 ## Recommendations
 
