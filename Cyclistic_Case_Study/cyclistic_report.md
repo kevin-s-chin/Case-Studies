@@ -1,7 +1,3 @@
-# Cyclistic Case Study Report
-
-Created time: October 3, 2023 9:19 PM
-
 # Cyclistic Report: Member and Casual User Behavior
 
 By Kevin Chin
