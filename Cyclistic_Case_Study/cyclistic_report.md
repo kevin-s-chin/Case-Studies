@@ -4,7 +4,7 @@ By Kevin Chin
 
 Published: 9 October 2023
 
-Last edited: 9 October 2023
+Last edited: 10 October 2023
 
 ## Executive Summary
 
@@ -254,7 +254,9 @@ View(wilcoxon_results_month)
 
 ## Appendix 2: R Code and SQL Queries for Data Cleaning
 
-The following R packages were used to perform this case study
+This study was performed using R; equivalent SQL code is also included.  
+  
+The following R packages were used to perform this case study:
 
 ```r
 library(conflicted)
