@@ -2,19 +2,19 @@
 
 By Kevin Chin
 
-Published: 9 October, 2023
+Published: 9 October 2023
 
-Last edited: 9 October, 2023
+Last edited: 9 October 2023
 
 ## Executive Summary
 
 #### Overview
 
-Cyclistic is a fictional Chicago-based bike-sharing company whose userbase is split into two categories: members who pay an annual subscription and casuals who can buy a single-ride or full-day pass.
+Cyclistic is a fictional Chicago-based bike-sharing company whose user base is split into two categories: members who pay an annual subscription and casuals who can buy a single-ride or full-day pass.
 
 #### Problem
 
-Thus far, Cyclistic has focussed on building its userbase. Recent financial analysis has revealed that our members are much more profitable than our casual users, so we intend to pivot our marketing strategy towards converting casuals into members. This study was conducted using bike trip data and its insights will inform our marketing team about how casuals and members use our services.
+Thus far, Cyclistic has focussed on building its user base. Recent financial analysis has revealed that our members are much more profitable than our casual users, so we intend to pivot our marketing strategy towards converting casuals into members. This study was conducted using bike trip data and its insights will inform our marketing team about how casuals and members use our services.
 
 #### Findings
 
@@ -41,8 +41,8 @@ Trends in casual usage:
 Based on our findings, we recommend that the new marketing strategy focuses on:
 
 - Demonstrating the convenience of commuting and making short (less than 10 min.) trips around the city using Cyclistic bikes.
-- Offer a seasonal promotion in the fall to drive casual engagement and spring to bring casuals back after the winter months.
-- Combine fun and practical use-cases in our marketing materials to show casuals that Cyclistic’s service is multi-purpose.
+- Offer a seasonal promotion in the fall to drive casual engagement and in spring to bring casuals back after the winter months.
+- Combine fun and practical use cases in our marketing materials to show casuals that Cyclistic’s service is multi-purpose.
 
 ## Table of Contents
 
@@ -59,58 +59,62 @@ Based on our findings, we recommend that the new marketing strategy focuses on:
 
 ## Introduction
 
-At Cyclistic, a fictional Chicago-based bike-sharing company, we’ve built a large userbase and have determined that our members are much more profitable than our casual riders. Our customers with annual memberships can use the bikes whenever they like while casuals can buy a single-ride or full-day pass. The purpose of this study is to leverage the data collected from millions of Cyclistic’s bike trips to gain insight into how casuals and members use our bikes. We will then use these insights to provide our marketing team with recommendations to develop a marketing strategy that converts casuals into members. 
+At Cyclistic, a fictional Chicago-based bike-sharing company, we’ve built a large user base and have determined that our members are much more profitable than our casual riders. Our customers with annual memberships can use the bikes whenever they like while casuals can buy a single-ride or full-day pass. The purpose of this study is to leverage the data collected from millions of Cyclistic’s bike trips to gain insight into how casuals and members use our bikes. We will then use these insights to provide our marketing team with recommendations to develop a marketing strategy that converts casuals into members. 
 
 ## Data Collection
 
 The ridership data used in this analysis was sourced from Motivate International Inc.’s [Divvy bike-sharing database](https://divvy-tripdata.s3.amazonaws.com/index.html), which is free to use under this [license](https://divvybikes.com/data-license-agreement).
 
-Monthly ride data from July-2022 to June-2023 was gathered in CSV format. This constitutes a years-worth of the most recent ridership data available from Divvy Bikes. By analyzing a full year of rides, we can gain insight into how casuals and members use our bikes through the year.
+Monthly ride data from July 2022 to June 2023 was gathered in CSV format. This constitutes a year of the most recent ridership data available from Divvy Bikes. By analyzing a full year of rides, we can gain insight into how casuals and members use our bikes throughout the year.
 
 The dataset contains the following categories for each observation: a unique ride id, the type of bike used, start and end timestamps, start and end bike stations, start and end coordinates, and whether the rider was a member or casual. 
 
 ## Data Processing
 
 First, we need to clean the data. This process is described in the table below.
-
+<div align="center">
+  
 | Step | Process | Reasoning |
 | --- | --- | --- |
-| 1 | Consolidate 12 months of ride data into one data frame and check that it’s all present | To ensure the data is comprehensively cleaned and to avoid repeating work, we’ll combine the data together so all 12 months are cleaned simultaneously |
+| 1 | Consolidate 12 months of ride data into one data frame and check that it’s all present | To ensure the data is comprehensively cleaned and to avoid repeating work, we’ll combine the data together to clean all 12 months simultaneously |
 | 2 | Eliminate duplicate entries  | Duplicate entries were eliminated by searching for any repeated ride id’s. In this case, none were found so there are no duplicates  |
-| 3  | Filter the data so that it only contains rides that started between July 2022 and June 2023 | Our desired sample is exactly one year long, according to ride start date and time. |
-| 4 | Remove rides with negative ride duration | Ride time cannot be negative. This data is erroneous and therefore removed. |
-| 5 | Remove rides made by casuals that are greater than 24 hours.  | Casuals are limited to a day pass. Any rides that exceed 24 hours are no longer considered a single ride and are therefore removed.  |
+| 3  | Filter the data so that it only contains rides that started between July 2022 and June 2023 | Our desired sample is exactly one year long, according to the ride start and end times. |
+| 4 | Remove rides with negative ride duration | Ride time cannot be negative. This data is erroneous and was removed. |
+| 5 | Remove rides made by casuals that are greater than 24 hours.  | Casuals are limited to a day pass. Any rides that exceed 24 hours are no longer considered a single ride and were removed.  |
 | 6 | Correct missing coordinate data | Cross-reference start and end stations to determine start and end coordinates.  |
 | 7 | Calculate minimum distance traveled and estimated average speed, then remove speed entries that are NA or greater than 65 kmph  | The straight distance between start and end coordinates represents the minimum possible distance traveled for each observation. This is used with ride time to calculate a rough estimate of average speed.
+</div>
 
 Sustained speeds beyond 65 kmph are not realistic. These entries could be attributed to faulty GPS data or bikes being loaded into vehicles and driven somewhere. 
 
-Observations with “NA” speed entries are missing several fields so their integrity is suspect. |
-| 8 | Remove rides that started and stopped in the same location and had a duration less than 30 seconds | If the ride is only 30 seconds long and the distance traveled is 0, it is assumed that the bike was checked out then checked back in without a ride occurring. |
-| 9 | Count null start and end station entries | This helps us get a grasp of the data’s validity. Too many null entries for start and end stations limits the usefulness of the data. These NA entries are interpreted as rides that started or ended at a location other than a designated bike station.
+Observations with “NA” speed entries are missing several fields, so their integrity is suspect. |
+| 8 | Remove rides that started and stopped in the same location and had a duration of less than 30 seconds | If the ride is only 30 seconds long and the distance traveled is 0, it is assumed that the bike was checked out and then checked back in without a ride occurring. |
+| 9 | Count null start and end station entries | This helps us get a grasp of the data’s validity. Too many null entries for start and end stations limit the usefulness of the data. These NA entries are interpreted as rides that started or ended at a location other than a designated bike station.
 
-Of the 5.7 million remaining entries after cleaning, about three quarters have valid start and end station entries. Observations with missing station data will be kept since their time stamp data is still valuable. The remaining sample is more than sufficient to make strong inferences about station usage. |
+Of the 5.7 million remaining entries after cleaning, about three-quarters have valid start and end station entries. Observations with missing station data will be kept since their time stamp data is still valuable. The remaining sample is more than sufficient to make strong inferences about station usage. |
 
 Next, the data needs to be transformed before analysis:
-
+<div align="center">
+  
 | Step | Process | Reasoning |
 | --- | --- | --- |
 | 1 | Add columns for month, day of the week, and weekday or weekend | Adding these three columns will allow us to analyze variances in rider behavior with respect to month, the day of the week, and whether the ride occurred on a weekday or weekend.  |
-| 2 | Split member and casual data to new data frames | For convenience during exploratory data analysis, new data frames that only included data from members or casuals were created. |
+| 2 | Split member and casual data into new data frames | For convenience during exploratory data analysis, new data frames that only included data from members or casuals were created. |
 
+</div>
 ## Analysis and Findings
 
-To gain perspective on how casuals and members use Cyclistic’s services, we’ll start our analysis at a macro level then look at the data in increasing levels of detail. Medians will be compared for most of the analysis because statistical tests (see Appendix 1) revealed that the data does not follow a normal distribution. Therefore the median provides the least biased estimate with which to compare the data.
+To gain perspective on how casuals and members use Cyclistic’s services, we’ll start our analysis at a macro level and then look at the data in increasing levels of detail. Medians will be compared for most of the analysis because statistical tests (see Appendix 1) revealed that the data does not follow a normal distribution. Therefore, the median provides the least biased estimate with which to compare the data.
 
 #### Monthly ridership behavior
 
-First, we’ll examine the median number of rides casuals and members made on a monthly basis. 
+First, we’ll examine the median number of rides casuals and members made monthly. 
 
 <p align="center">
 <img src="https://github.com/kevin-s-chin/Case_Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/median_month.png?raw=true" width="700">
 </p>
 
-This graph illustrates how the seasons affect ridership. Casuals and member ridership is highest during the pleasant summer months, but ridership falls significantly as the weather gets colder. There’s an 88% drop in casual ridership from June to January. Member usage decreases by 70% from its high in August to its low in December. In the coldest Winter months, there are about three times as many member rides as there are casual rides.
+This graph illustrates how the seasons affect ridership. Casuals and member ridership are highest during the pleasant summer months, but ridership falls significantly as the weather gets colder. There’s an 88% drop in casual ridership from June to January. Member usage decreased by 70% from its high in August to its low in December. In the coldest Winter months, there are about three times as many member rides as there are casual rides.
 
 Next, we’ll zoom in further and look at the frequency and duration of rides with respect to the day of the week.
 
@@ -120,13 +124,13 @@ Next, we’ll zoom in further and look at the frequency and duration of rides wi
 <img src="https://github.com/kevin-s-chin/Case_Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/median_duration_week.png?raw=true" width="700">
 </p>
 
-Here we can see the ebb and flow of bike usage throughout the week. Median member ridership peaks on Thursday, then decreases until Monday where it ramps up again. Median casual ridership peaks on Saturday and bottoms on Monday and Tuesday. The majority of ride volume throughout the year comes from members and it’s particularly concentrated during weekdays, but how long do members and casuals spend on each trip? The difference between median rides per day for members and casuals on Saturday and Sunday was not statistically significant. 
+Here we can see the ebb and flow of bike usage throughout the week. Median member ridership peaks on Thursday, then decreases until Monday when it ramps up again. Median casual ridership peaks on Saturday and bottoms on Monday and Tuesday. The majority of ride volume throughout the year comes from members and it’s particularly concentrated during weekdays, but how long do members and casuals spend on each trip? The difference between median rides per day for members and casuals on Saturday and Sunday was not statistically significant. 
 
 <p align="center">
 <img src="https://github.com/kevin-s-chin/Case_Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/median_week.png?raw=true" width="700">
 </p>
 
-Median member ride duration is less than median casual ride duration every day of the week and, from the previous graph, the majority of median ridership volume comes from members. In other words, members tend to make many short-duration trips. Median member ride duration also remains consistent throughout the week whereas casual ride duration increases on the weekends.
+Median member ride duration is less than median casual ride duration every day of the week and, from the previous graph, most median ridership volume comes from members. In other words, members tend to make many short-duration trips. Median member ride duration also remains consistent throughout the week whereas casual ride duration increases on the weekends.
 
 To get a better sense of how each group uses our bikes, let’s compare their overall median and average ride times:
 
@@ -139,7 +143,7 @@ To get a better sense of how each group uses our bikes, let’s compare their ov
 
 </div>  
 
-Member average and median ride duration are similar, which supports our earlier observation that members take many short-duration trips. Casuals, on the other hand, are split; average trip duration is almost double median trip duration. The gap between median and average duration implies casuals make many short-duration trips, which drags the median down, and also take enough long-duration trips to skew the average up.
+Member average and median ride duration are similar, which supports our earlier observation that members take many short-duration trips. Casuals, on the other hand, are split; the average trip duration is almost double the median trip duration. The gap between the median and average duration implies casuals make many short-duration trips, which drags the median down while making enough long-duration trips to skew the average up.
 
 Next, we’ll examine the intraday ride frequency of members and casuals.
 
@@ -151,15 +155,15 @@ Next, we’ll examine the intraday ride frequency of members and casuals.
 
 Observe the spikes in median member ridership at 8:00 and 17:00 on the left-hand graph. Those spikes illustrate that members are using their bikes to commute during rush hour. Casual ridership steadily creeps up during the day and peaks during afternoon rush hour as well. 
 
-The casual peak at 17:00 could be them commuting home; however, if they didn’t bike to work then they likely drove. Therefore this peak may be casuals biking for fun or exercise after work before driving home in the evening.
+The casual peak at 17:00 could be them commuting home; however, if they didn’t bike to work then they likely drove. Therefore, this peak may be casuals biking for fun or exercise after work before driving home in the evening.
 
 Weekend median member ridership looks greater than casual ridership, but this difference is only statistically significant for a few hours in the morning (see Appendix 1). 
 
-It can be inferred from this that members have integrated our bike-sharing service into their daily routine to a greater extent than casuals. Cyclistic fulfills an essential piece its members’ everyday transportation needs.
+It can be inferred from this that members have integrated our bike-sharing service into their daily routine to a greater extent than casuals. Cyclistic fulfills an essential piece of its members’ everyday transportation needs.
 
 #### Station usage by members and casuals
 
-To get a better sense of how casuals behave, we collated the locations of the top 10 stations used by casuals and members. The top-10 lists were determined by ranking the stations using the sum of rides started and ended at each one.
+To get a better sense of how casuals behave, we collated the locations of the top 10 stations used by casuals and members. The top-10 lists were determined by ranking the stations using the sum of rides that started and ended at each one.
 
 <p align="center">
 <img src="https://github.com/kevin-s-chin/Case_Studies/blob/main/Cyclistic_Case_Study/Cyclistic_Visualizations/station_freq_pie_combined.png?raw=true" width="700">
@@ -169,7 +173,8 @@ Among the top 10 stations used by casuals, seven are on the lakefront and two ar
   
 ## Summary Conclusion
 This data analysis study has identified the following trends among members and casuals:
-
+<div align="center">
+  
 | Members | Casuals |
 | --- | --- |
 | Persist through winter to a greater degree than casuals | Ride in a recreational capacity |
@@ -178,6 +183,8 @@ This data analysis study has identified the following trends among members and c
 | Ride most during rush hour on weekdays | Majority of most popular stations are on the lakefront |
 | Have a similar intraday ridership profile to casuals on weekends |  |
 | Majority of most popular stations are urban |  |
+
+</div>
 
 ***Key takeaway:** **Members use Cyclistic bikes to fulfill their everyday transportation needs while casuals tend to use them recreationally.***  
 
@@ -194,14 +201,16 @@ We propose three recommendations:
 ## Appendix 1: Statistical Analysis
 
 The data was statistically compared from five perspectives:
-
+<div align="center">
+  
 |  | Description | Conclusion |
 | --- | --- | --- |
 | 1.  | Compare daily ridership for each month by user type | The difference in median daily ridership for members and casuals was statistically significant for all months except July.  |
 | 2.  | Compare ridership by day of the week and user type | The difference in median ridership for members and casuals was statistically significant on weekdays, but we cannot conclude that they differ on weekends. |
 | 3.  | Compare ride duration for each day of the week by user type | The difference in median ride duration for members and casuals was statistically significant for every day of the week. |
-| 4. | Compare ridership for each hour on weekdays by user type | The difference in median ridership for members and casuals was statistically significant from 5 am to 12 am, but we cannot conclude that they differ outside of those hours. |
-| 5.  | Compare ridership for each hour hour on weekends by user type | The difference in median ridership for members and casuals was statistically significant between 6 am and 10 am, but we cannot conclude that they differ outside of this four-hour period. |
+| 4. | Compare ridership for each hour on weekdays by user type | The difference in median ridership for members and casuals was statistically significant from 5 a.m. to 12 a.m., but we cannot conclude that they differ outside of those hours. |
+| 5.  | Compare ridership for each hour on weekends by user type | The difference in median ridership for members and casuals was statistically significant between 6 a.m. and 10 a.m., but we cannot conclude that they differ outside of this four-hour period. |
+</div>
 
 Each test followed the same procedure:
 
@@ -209,7 +218,7 @@ Step 1: Determine if the data from the perspective being tested is normally dist
 
 Step 2: Determine if the difference between ridership metrics for members and casuals is statistically significant. 
 
-The tests were performed at a 95% confidence level. All five perspectives compared failed the test for normality. This limits the tests we can perform in Step 2, since many statistical tests assume normality. In Step 2, a Wilcoxon Rank Sum multiple comparisons test was performed. This test compares medians and does not require normally distributed data.
+The tests were performed at a 95% confidence level. All five perspectives compared failed the test for normality. This limits the tests we can perform in Step 2 since many statistical tests assume normality. In Step 2, a Wilcoxon Rank Sum multiple comparisons test was performed. This test compares medians and does not require normally distributed data.
 
 Sample R code for daily ridership by month:
 
@@ -368,7 +377,7 @@ ORDER BY
 -- Therefore all data is within the desired timeframe
 ```
 
-Step 4. Remove observations with negative ride time
+Step 4. Remove observations with a negative ride time
 
 R:
 
@@ -552,7 +561,7 @@ WHERE
 -- Removed 13055 rows. Query 3 removed 11453 and Query 4 removed 1602
 ```
 
-Step 8. Filter out rides that started and stopped in the same location and had a duration less than 30 seconds
+Step 8. Filter out rides that started and stopped in the same location and had a duration of less than 30 seconds
 
 R:
 
@@ -603,7 +612,7 @@ WHERE
   end_station_name IS NULL OR start_station_name IS NULL
 
 -- Result: 1329219. There is a final difference of six entries between R and SQL.
--- This discrepency occured in Step 7 and is likely due to the way R and BigQuery
+-- This discrepancy occurred in Step 7 and is likely due to the way R and BigQuery
 -- handle NULL and NA entries.
 ```
 
